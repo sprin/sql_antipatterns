@@ -39,7 +39,7 @@ Create schema:
 python create_all.py
 
 Populate with initial data:
-cat ../sql/initial_data.sql | psql sqla
+psql sqla -f ../sql/initial_data.sql
 
 Print some interesting queries:
 cat ../sql/queries.sql | psql sqla
