@@ -7,41 +7,50 @@ from sqlalchemy import create_engine
 from sqlalchemy.dialects import postgresql
 
 from schema import accounts
+from decorators import templated, json_response
 
 app = Flask(__name__)
 
 engine = create_engine('postgresql://django@localhost:5432/sqla')
 
-ALCHEMY_STATEMENTS = (
-    {
-    'name': 'Get name of account 1',
-    'stmt_str': 
+ALCHEMY_STATEMENTS = {
+    'Get name of account 1': 
         'select([accounts.c.first_name]).where(accounts.c.account_id == 1)',
-    },
-)
+}
 
 @app.route('/')
-def main():
-    statement_list = [
-        {
-            'alchemy_stmt': stmt_dict['stmt_str'],
-            'sql_stmt': compile_statement(eval(stmt_dict['stmt_str'])),
-            'name': stmt_dict['name'],
-        }
-        for stmt_dict in ALCHEMY_STATEMENTS
-    ]
-    return Response(json.dumps(statement_list),
-                    mimetype='application/json')
+@templated('index.html')
+def index():
+    """
+    The application payload of HTML, CSS, and JS.
+    Bootstraps the default statement list.
+    """
+    ctx = {
+        'statements': json.dumps(
+            serialize_statements(ALCHEMY_STATEMENTS)),
+    }
+    return ctx
 
 @app.route('/exec', methods=['POST'])
+@json_response
 def execute():
     stmt_str = json.loads(request.data).get('stmt_str')
     result_proxy = eval(stmt_str).execute()
     result_dict = [dict(zip(result_proxy.keys(), row_data))
                    for row_data in result_proxy.fetchall()]
-    return Response(json.dumps(result_dict),
-                    mimetype='application/json')
-    
+    return json.dumps(result_dict)
+
+def serialize_statements(statements_dict):
+    statement_list = [
+        {
+            'alchemy_stmt': stmt_str,
+            'sql_stmt': compile_statement(eval(stmt_str)),
+            'name': name,
+        }
+        for name, stmt_str in statements_dict.iteritems()
+    ]
+    return statement_list
+
 def compile_statement(statement):
     dialect = postgresql.dialect()
     comp = compiler.SQLCompiler(dialect, statement)

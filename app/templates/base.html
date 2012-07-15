@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SQLA</title>
+
+{% block css %}
+  <link href="{{ url_for('static', filename='src/bootstrap-2.0.4/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='src/bootstrap-2.0.4/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+</head>
+
+<body>
+  <div id="sqla-app" class="container">
+    <div class="container" id="container">
+{% block container %}{% endblock %}
+    </div>
+  </div>
+
+<!-- VENDOR JAVASCRIPT -->
+{% block vendor_js %}
+  <script src="{{ url_for('static', filename='src/js/vendor/jquery-1.7.2.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='src/js/vendor/underscore-1.3.3.full.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='src/js/vendor/handlebars-1.0.0.beta.6.full.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='src/bootstrap-2.0.4/js/bootstrap.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='src/js/vendor/backbone-0.92.full.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+<!-- JAVASCRIPT TEMPLATES -->
+{% block js_templates %}{% endblock %}
+
+<!-- APPLICATION JAVASCRIPT -->
+{% block app_js %}{% endblock %}
+
+</body>
+</html>
+

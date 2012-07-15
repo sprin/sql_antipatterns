@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block container %}{% endblock %}
+
+{% block js_templates %}
+{% raw %}
+
+{% endraw %}
+{% endblock js_templates %}
+
+{% block app_js %}
+<script type="text/javascript">
+  // Boot-strapped data.
+  window.statements = {{ statements|safe }};
+</script>
+<script src="{{ url_for('static', filename='src/js/main.js') }}" type="text/javascript"></script>
+{% endblock app_js %}
