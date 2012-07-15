@@ -31,3 +31,5 @@ INSERT INTO Comments (comment_id, bug_id, author, comment_date, comment) VALUES
   (9800, 2345, 2, TIMESTAMP '2004-10-26 10:23:54', 'Widgets are broken, maybe need to use Zappa 1.8 widgets?'),
   (9876, 2345, 1, TIMESTAMP '2004-10-26 12:23:54', 'Great idea... pffft');
 
+INSERT INTO Contacts (product_id, account_id)
+VALUES (1, 1), (1, 2), (2, 3), (2, 1), (3, 2);

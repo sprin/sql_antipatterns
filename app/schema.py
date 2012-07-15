@@ -10,6 +10,7 @@ engine = create_engine('postgresql://django@localhost:5432/sqla')
 
 # create MetaData
 meta = MetaData()
+meta.bind = engine
 
 accounts = Table('accounts', meta,
     # (Column args)[http://ur1.ca/9lg3r]
@@ -78,3 +79,12 @@ bugsproducts = Table('bugsproducts', meta,
     Column('product_id', BIGINT, ForeignKey('products.product_id'),
         primary_key = True, nullable = False),
 )
+
+# Solution to Jaywalking: Create an intersection table, see p18
+contacts = Table('contacts', meta,
+    Column('product_id', BIGINT, ForeignKey('products.product_id'), 
+        primary_key = True),
+    Column('account_id', BIGINT, ForeignKey('accounts.account_id'),
+        primary_key = True),
+)
+    
