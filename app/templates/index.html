@@ -1,8 +1,65 @@
 {% extends 'base.html' %}
-{% block container %}{% endblock %}
+
+{% block css %}
+{{ super() }}
+<link href="{{ url_for('static', filename='src/css/sqla.css') }}" rel="stylesheet">
+{% endblock css %}
+
+{% block container %}
+<div id="sqla-app" class="container">
+  
+  <header class="jumbotron subhead">
+    <h1>SQL Anti/Alchemy</h1>
+    <p class="lead">Play with SQL Alchemy, check out examples from SQL Antipatterns.</p>
+  </header>
+  <section id="inject-new">
+    <div class="row">
+      <div class="span7 well">
+        <form class="form-horizontal">
+          <fieldset>
+            <div class="control-group">
+              <label class="control-label" for="new-stmt">Alchemy Statement</label>
+              <div class="controls">
+                <textarea class="input-xlarge span5 alchemy-input" id="new-stmt" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Compiled SQL</label>
+              <div class="controls">
+                <span class="input-xlarge span5 uneditable-input sql-input"></span>
+              </div>
+            </div>
+            <div class="control-group query-results">
+              <label class="control-label">Query Results</label>
+              <div class="controls">
+                <span class="span5 sql-input">
+                  <pre></pre>
+                </span>
+              </div>
+            </div>
+            <div class="form-actions inject-actions">
+              <a class="shiny btn-primary btn-large" href="">
+                <span class="shine"></span>
+                <span class="text">Inject Alchemy Statement</span>
+              </a>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="span4 well">
+        <p>Schema</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock container %}
 
 {% block js_templates %}
 {% raw %}
+
+<script id="add-new-template" type="text/html">
+  <input id="{{ input_id }}" type="hidden" value="{{ value }}"/>
+</script>
 
 {% endraw %}
 {% endblock js_templates %}

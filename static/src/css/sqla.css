@@ -1,0 +1,135 @@
+body {
+  position: relative;
+  padding-top: 60px;
+  background-color: #fff;
+  background-image: url(../img/grid-18px-masked.png);
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
+
+.jumbotron {
+  position: relative;
+}
+.jumbotron h1 {
+  margin-bottom: 9px;
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.jumbotron p {
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+section {
+padding-top: 60px;
+}
+
+.form-horizontal {
+  margin-bottom: 0px;
+}
+
+.form-horizontal .controls {
+  margin-left: 120px;
+}
+
+.form-horizontal .form-actions {
+  padding-left: 120px;
+}
+
+.form-horizontal .control-label {
+  width: 115px;
+}
+
+.alchemy-input {
+  resize: vertical;
+}
+
+.sql-input {
+  display: inline-block;
+  margin-left: 0px;
+  height: 90px;
+  resize: vertical;
+}
+
+
+.query-results {
+  padding: 18px 0px 18px 0px;
+  border-top: 1px solid #E5E5E5;
+}
+
+.query-results span {
+  display: inline-block;
+  height: 90px;
+  overflow: auto;
+  resize: vertical;
+  border-bottom: 2px solid #E5E5E5;
+}
+
+.query-results pre {
+  height: 100%;
+}
+
+.inject-actions {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.shiny {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background: white url(../img/alchemy_button.png) top right no-repeat
+}
+
+.shiny:hover {
+  text-decoration: none;
+  background-position: -10px 0px;
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+
+}
+
+.shiny:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+
+a.shiny span.shine {
+	content: '';
+	position: absolute;
+	height: 400px;
+	width: 20px;
+	background: white;
+	top: -80px;
+	left: -20px;
+	display: block;
+	opacity: 0.8;
+	
+	-webkit-box-shadow: 0px 0px 20px 10px white; 
+	-moz-box-shadow: 0px 0px 20px 10px white; 
+	box-shadow: 0px 0px 20px 10px white; 
+	
+	-webkit-transform: rotate(-70deg);	
+	-moz-transform: rotate(-70deg);
+	-ms-transform: rotate(-70deg);
+	-o-transform: rotate(-70deg);
+	transform: rotate(-70deg);
+}
+
+a.shiny:hover span.shine {
+	left: 170px;
+	top: -300px;
+
+  -webkit-transition: all 0.8s ease;
+	-moz-transition: all 0.8s ease;
+	-ms-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
+
