@@ -34,7 +34,7 @@ def index():
 @app.route('/exec', methods=['POST'])
 @json_response
 def execute():
-    stmt_str = json.loads(request.data).get('stmt_str')
+    stmt_str = json.loads(request.data).get('alchemy_stmt')
     result_proxy = eval(stmt_str).execute()
     result_dict = [dict(zip(result_proxy.keys(), row_data))
                    for row_data in result_proxy.fetchall()]

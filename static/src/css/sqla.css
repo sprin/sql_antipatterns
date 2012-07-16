@@ -64,11 +64,12 @@ padding-top: 60px;
   height: 90px;
   overflow: auto;
   resize: vertical;
-  border-bottom: 2px solid #E5E5E5;
+  border: 2px solid #E5E5E5;
 }
 
 .query-results pre {
-  height: 100%;
+  height: 90%;
+  border: none;
 }
 
 .inject-actions {
